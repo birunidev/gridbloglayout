@@ -1,0 +1,224 @@
+@mixin tablet {
+    @media (min-width: 600px) {
+        @content;
+    }
+}
+
+@mixin desktop {
+    @media (min-width: 900px) {
+        @content;
+    }
+}
+
+body {
+    font-family: 'Quicksand';
+}
+
+
+.container {
+    width: 95%; //to add margin for all the layout
+    margin: 20px auto !important;
+
+    @include tablet {
+        display: grid;
+        grid-template-columns: repeat(2, 1fr);
+        grid-gap: 10px;
+    }
+
+    @include desktop {
+        display: grid;
+        grid-template-columns: repeat(3, 1fr);
+        grid-gap: 10px;
+
+    }
+
+}
+
+#cooking {
+    @include tablet {
+        grid-column: 1/3;
+    }
+
+    .category {
+        display: none;
+
+        @include tablet {
+            display: block;
+            margin-bottom: 5px;
+        }
+
+        @include desktop {
+            display: none;
+        }
+
+        a {
+
+            @include tablet {
+                display: inline-block;
+                margin-right: 5px;
+                color: white;
+                text-decoration: none;
+                padding: 4px 10px;
+                font-size: 14px;
+                border-radius: 5px;
+                font-weight: medium;
+
+            }
+        }
+
+        .food {
+            background: #9C44AA;
+        }
+
+        .tutorial {
+            background: #3372AD;
+        }
+    }
+
+
+
+    @include desktop {
+        grid-column: 1;
+    }
+
+}
+
+#knife {
+    @include desktop {
+        grid-column: 2;
+        grid-row: 1/3;
+        height: 468px;
+
+    }
+
+    .image-wrapper {
+
+        @include desktop {
+            height: 468px;
+        }
+
+
+        img {
+            @include desktop {
+                width: 700px;
+                transform: translateX(-100px);
+                transition: 0.5 all ease-out;
+            }
+        }
+    }
+
+    .category {
+        display: none;
+
+        @include tablet {
+            display: none;
+            margin-bottom: 5px;
+        }
+
+        @include desktop {
+            display: block;
+        }
+
+        a {
+
+            @include tablet {
+                display: inline-block;
+                margin-right: 5px;
+                color: white;
+                text-decoration: none;
+                padding: 4px 10px;
+                font-size: 14px;
+                border-radius: 5px;
+                font-weight: medium;
+
+            }
+        }
+
+        .food {
+            background: #9C44AA;
+            transition: .2s ease;
+        }
+
+        .food:hover {
+            background: rgb(121, 46, 133);
+        }
+
+        .tutorial {
+            background: #3372AD;
+            transition: .2s ease;
+        }
+
+        .tutorial:hover {
+            background: rgb(33, 80, 124);
+        }
+    }
+}
+
+#knife:hover {
+    img {
+        transform: scale(1.04);
+        transform: translateX(-90px);
+    }
+}
+
+
+// wrapper for blog content
+.content-wrapper {
+
+    width: 100%; //to make it responsive
+    height: 229px;
+    overflow: hidden; //to hide everything overflowing
+    position: relative; //to create relative div
+    cursor: pointer;
+    // overlay gradient
+    background: linear-gradient(179.77deg, rgba(196, 196, 196, 0) 45.91%, #565656 99.68%) !important;
+
+
+
+
+    .image-wrapper {
+        position: absolute; //to create div's position absolute, so it will not be out of relative div
+        overflow: hidden;
+        width: 100%;
+        height: 229px;
+        z-index: -99; //to send it behind titles
+
+        img {
+            width: 100%;
+            transition: 1s all ease-out;
+        }
+    }
+
+    // title blog
+    .title {
+        position: absolute;
+        bottom: 35px;
+        left: 20px;
+
+        h3 {
+            font-weight: bold;
+            font-size: 22px;
+            color: white;
+            margin-bottom: 10px;
+            cursor: pointer;
+
+        }
+
+        h3:hover {
+            color: rgb(231, 231, 231);
+        }
+
+        p {
+            color: #D6D6D6;
+            cursor: pointer;
+        }
+    }
+
+
+}
+
+.content-wrapper:hover {
+    img {
+        transform: scale(1.04);
+    }
+}
